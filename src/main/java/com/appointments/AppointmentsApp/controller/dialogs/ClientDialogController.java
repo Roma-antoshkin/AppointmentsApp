@@ -14,9 +14,6 @@ public class ClientDialogController {
 
     private Client editingClient;
 
-    /**
-     * Инициализация диалога редактирования
-     */
     public void setClient(Client client) {
         this.editingClient = client;
 
@@ -42,9 +39,6 @@ public class ClientDialogController {
         return client;
     }
 
-    /**
-     * Проверка корректности введённых данных
-     */
     private void validate() {
         if (nameField.getText() == null || nameField.getText().trim().isEmpty()) {
             throw new IllegalStateException("Имя не может быть пустым");
@@ -58,6 +52,5 @@ public class ClientDialogController {
             throw new IllegalStateException("Email не может быть пустым");
         }
 
-        // Дополнительно можно проверить формат email через regex
     }
 }

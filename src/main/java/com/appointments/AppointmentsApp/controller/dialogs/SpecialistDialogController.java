@@ -14,9 +14,6 @@ public class SpecialistDialogController {
 
     private Specialist editingSpecialist;
 
-    /**
-     * Инициализация диалога редактирования
-     */
     public void setSpecialist(Specialist specialist) {
         this.editingSpecialist = specialist;
 
@@ -27,9 +24,6 @@ public class SpecialistDialogController {
         }
     }
 
-    /**
-     * Получение объекта Specialist (вызывается при OK)
-     */
     public Specialist getSpecialist() {
         validate();
 
@@ -41,9 +35,6 @@ public class SpecialistDialogController {
         return specialist;
     }
 
-    /**
-     * Проверка корректности введённых данных
-     */
     private void validate() {
         if (nameField.getText() == null || nameField.getText().trim().isEmpty()) {
             throw new IllegalStateException("Имя не может быть пустым");

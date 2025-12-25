@@ -18,16 +18,6 @@ public class AppointmentMapper {
     @Autowired
     ServiceRepository serviceRepository;
 
-//    public AppointmentMapper(
-//            ClientRepository clientRepository,
-//            SpecialistRepository specialistRepository,
-//            ServiceRepository serviceRepository
-//    ) {
-//        this.clientRepository = clientRepository;
-//        this.specialistRepository = specialistRepository;
-//        this.serviceRepository = serviceRepository;
-//    }
-
     public Appointment toEntity(AppointmentDto dto) {
         Appointment appointment = new Appointment();
         map(dto, appointment);

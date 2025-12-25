@@ -26,9 +26,6 @@ public class ServiceDialogController {
         );
     }
 
-    /**
-     * Инициализация диалога редактирования
-     */
     public void setService(ServiceE service) {
         this.editingService = service;
 

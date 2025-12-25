@@ -83,9 +83,6 @@ public class AppointmentDialogController {
         endMinuteSpinner.getValueFactory().setValue(appointment.getEndTime().getMinute());
     }
 
-    /**
-     * Получение DTO (вызывается при OK)
-     */
     public AppointmentDto getDto() {
 
         validate();
@@ -108,9 +105,6 @@ public class AppointmentDialogController {
         return dto;
     }
 
-    /**
-     * Валидация полей
-     */
     private void validate() {
 
         if (clientComboBox.getValue() == null ||
