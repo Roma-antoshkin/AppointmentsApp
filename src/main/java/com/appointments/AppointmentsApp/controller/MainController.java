@@ -238,8 +238,6 @@ public class MainController {
         });
     }
 
-    /* ================= LOAD DATA ================= */
-
     private void loadAllData() {
         loadAppointments();
         loadClients();
@@ -291,10 +289,6 @@ public class MainController {
         specialistsTable.setItems(specialistFilteredList);
     }
 
-    /* ================= CRUD BUTTONS ================= */
-
-    // -------- Clients --------
-
     @FXML
     private void onAddClient() {
         openClientDialog(null);
@@ -317,8 +311,6 @@ public class MainController {
         }
     }
 
-    // -------- Services --------
-
     @FXML
     private void onAddService() {
         openServiceDialog(null);
@@ -340,8 +332,6 @@ public class MainController {
             loadServices();
         }
     }
-
-    // -------- Specialists --------
 
     @FXML
     private void onAddSpecialist() {
@@ -388,8 +378,6 @@ public class MainController {
             loadAppointments();
         }
     }
-
-    /* ================= DOUBLE CLICK ================= */
 
     @FXML
     private void onClientDoubleClick(MouseEvent e) {
@@ -502,14 +490,12 @@ public class MainController {
 
             AppointmentDialogController controller = loader.getController();
 
-            // наполняем справочники
             controller.initData(
                     service.fetchClientList(),
                     service.fetchSpecialistList(),
                     service.fetchServiceList()
             );
 
-            // если редактирование
             if (appointment != null) {
                 controller.setAppointment(appointment);
             }
@@ -551,7 +537,6 @@ public class MainController {
 
             ClientDialogController controller = loader.getController();
 
-            // если редактирование
             if (client != null) {
                 controller.setClient(client);
             }
@@ -645,7 +630,7 @@ public class MainController {
                 } else {
                     service.updateService(entity, serviceEntity.getServiceId());
                 }
-                loadServices(); // обновляем таблицу
+                loadServices();
             });
 
         } catch (Exception e) {
