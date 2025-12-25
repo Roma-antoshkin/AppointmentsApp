@@ -71,7 +71,7 @@ public class MainController {
     @FXML private TableColumn<ServiceE, Long> serviceIdCol;
     @FXML private TableColumn<ServiceE, String> serviceNameCol;
     @FXML private TableColumn<ServiceE, Double> servicePriceCol;
-    @FXML private TableColumn<ServiceE, Integer> serviceDurationCol;
+    @FXML private TableColumn<ServiceE, String> serviceDurationCol;
 
     ObjectProperty<Predicate<ServiceE>> searchServicesFilter;
     ObservableList<ServiceE> serviceObservableList;
@@ -193,7 +193,11 @@ public class MainController {
         serviceIdCol.setCellValueFactory(new PropertyValueFactory<>("serviceId"));
         serviceNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         servicePriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
-        serviceDurationCol.setCellValueFactory(new PropertyValueFactory<>("duration"));
+        serviceDurationCol.setCellValueFactory(
+                c -> new SimpleStringProperty(
+                        String.valueOf(c.getValue().getDuration().toMinutes()) + " минут"
+                )
+        );
 
         serviceObservableList = FXCollections.observableArrayList();
         serviceFilteredList = new FilteredList<>(serviceObservableList);
