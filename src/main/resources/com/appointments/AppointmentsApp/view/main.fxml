@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.appointments.AppointmentsApp.controller.MainController">
+
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+
+            <!-- ================= APPOINTMENTS ================= -->
+            <Tab text="Записи">
+                <BorderPane>
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+
+                    <top>
+                        <VBox spacing="10">
+                            <padding>
+                                <Insets top="10" bottom="10"/>
+                            </padding>
+                            <HBox spacing="10">
+                                <Button text="Добавить" onAction="#onAddAppointment"/>
+                                <Button text="Редактировать" onAction="#onEditAppointment"/>
+                                <Button text="Удалить" onAction="#onDeleteAppointment"/>
+
+                                <Label text="Фильтр по статусу:"/>
+
+                                <fx:define>
+                                    <ToggleGroup fx:id="filterStatusGroup"/>
+                                </fx:define>
+
+                                <RadioButton text="Любой" toggleGroup="$filterStatusGroup" userData="ALL" selected="true"/>
+                                <RadioButton text="Планируется" toggleGroup="$filterStatusGroup" userData="SCHEDULED"/>
+                                <RadioButton text="Завершено" toggleGroup="$filterStatusGroup" userData="COMPLETED"/>
+                                <RadioButton text="Отменено" toggleGroup="$filterStatusGroup" userData="CANCELLED"/>
+                                <RadioButton text="Неявка" toggleGroup="$filterStatusGroup" userData="NO_SHOW"/>
+                            </HBox>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label text="Поиск по совпадениям:" style="-fx-font-weight: bold; -fx-font-size: 16;"/>
+                                <TextField fx:id="matchesAppointmentsField" prefWidth="250"/>
+                            </HBox>
+                        </VBox>
+                    </top>
+
+                    <center>
+                        <TableView fx:id="appointmentsTable" onMouseClicked="#onAppointmentDoubleClick">
+                            <columns>
+                                <TableColumn text="ID" fx:id="appointmentIdCol"/>
+                                <TableColumn text="Дата Начала" fx:id="appointmentStartTimeCol"/>
+                                <TableColumn text="Дата Окончания" fx:id="appointmentEndTimeCol"/>
+                                <TableColumn text="Клиент" fx:id="appointmentClientCol"/>
+                                <TableColumn text="Услуга" fx:id="appointmentServiceCol"/>
+                                <TableColumn text="Специалист" fx:id="appointmentSpecialistCol"/>
+                                <TableColumn text="Статус" fx:id="appointmentStatusCol"/>
+                            </columns>
+                        </TableView>
+                    </center>
+                </BorderPane>
+            </Tab>
+
+            <!-- ================= CLIENTS ================= -->
+            <Tab text="Клиенты">
+                <BorderPane>
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+
+                    <top>
+                        <VBox spacing="10">
+                            <padding>
+                                <Insets top="10" bottom="10"/>
+                            </padding>
+                            <HBox spacing="10">
+                                <Button text="Добавить" onAction="#onAddClient"/>
+                                <Button text="Редактировать" onAction="#onEditClient"/>
+                                <Button text="Удалить" onAction="#onDeleteClient"/>
+                            </HBox>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label text="Поиск по совпадениям:" style="-fx-font-weight: bold; -fx-font-size: 16;"/>
+                                <TextField fx:id="matchesClientsField" prefWidth="250"/>
+                            </HBox>
+                        </VBox>
+                    </top>
+
+                    <center>
+                        <TableView fx:id="clientsTable" onMouseClicked="#onClientDoubleClick">
+                            <columns>
+                                <TableColumn text="ID" fx:id="clientIdCol"/>
+                                <TableColumn text="Имя" fx:id="clientNameCol"/>
+                                <TableColumn text="Телефон" fx:id="clientPhoneCol"/>
+                                <TableColumn text="Email" fx:id="clientEmailCol"/>
+                            </columns>
+                        </TableView>
+                    </center>
+                </BorderPane>
+            </Tab>
+
+            <!-- ================= SERVICES ================= -->
+            <Tab text="Услуги">
+                <BorderPane>
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+
+                    <top>
+                        <VBox spacing="10">
+                            <padding>
+                                <Insets top="10" bottom="10"/>
+                            </padding>
+                            <HBox spacing="10">
+                                <Button text="Добавить" onAction="#onAddService"/>
+                                <Button text="Редактировать" onAction="#onEditService"/>
+                                <Button text="Удалить" onAction="#onDeleteService"/>
+                            </HBox>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label text="Поиск по совпадениям:" style="-fx-font-weight: bold; -fx-font-size: 16;"/>
+                                <TextField fx:id="matchesServicesField" prefWidth="250"/>
+                            </HBox>
+                        </VBox>
+                    </top>
+
+                    <center>
+                        <TableView fx:id="servicesTable" onMouseClicked="#onServiceDoubleClick">
+                            <columns>
+                                <TableColumn text="ID" fx:id="serviceIdCol"/>
+                                <TableColumn text="Название" fx:id="serviceNameCol"/>
+                                <TableColumn text="Цена" fx:id="servicePriceCol"/>
+                                <TableColumn text="Длительность" fx:id="serviceDurationCol"/>
+                            </columns>
+                        </TableView>
+                    </center>
+                </BorderPane>
+            </Tab>
+
+            <!-- ================= SPECIALISTS ================= -->
+            <Tab text="Специалисты">
+                <BorderPane>
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+
+                    <top>
+                        <VBox spacing="10">
+                            <padding>
+                                <Insets top="10" bottom="10"/>
+                            </padding>
+                            <HBox spacing="10">
+                                <Button text="Добавить" onAction="#onAddSpecialist"/>
+                                <Button text="Редактировать" onAction="#onEditSpecialist"/>
+                                <Button text="Удалить" onAction="#onDeleteSpecialist"/>
+                            </HBox>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label text="Поиск по совпадениям:" style="-fx-font-weight: bold; -fx-font-size: 16;"/>
+                                <TextField fx:id="matchesSpecialistsField" prefWidth="250"/>
+                            </HBox>
+                        </VBox>
+                    </top>
+
+                    <center>
+                        <TableView fx:id="specialistsTable" onMouseClicked="#onSpecialistDoubleClick">
+                            <columns>
+                                <TableColumn text="ID" fx:id="specialistIdCol"/>
+                                <TableColumn text="Имя" fx:id="specialistNameCol"/>
+                                <TableColumn text="Специализация" fx:id="specialistSpecCol"/>
+                                <TableColumn text="Рейтинг" fx:id="specialistRatingCol"/>
+                            </columns>
+                        </TableView>
+                    </center>
+                </BorderPane>
+            </Tab>
+
+
+        </TabPane>
+    </center>
+
+</BorderPane>
