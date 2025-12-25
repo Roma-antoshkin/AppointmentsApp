@@ -355,8 +355,6 @@ public class MainController {
         }
     }
 
-    // -------- Appointments --------
-
     @FXML
     private void onAddAppointment() {
         openAppointmentDialog(null);
